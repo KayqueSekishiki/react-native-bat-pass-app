@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, Pressable } from "react-native";
 
 import { styles } from "./BatButtonStyles";
 import { BatTextInput } from "../BatTextInput/BatTextInput";
 
 export function BatButton() {
+  const [pass, setPass] = useState("");
+
+  function handleGenerateButton() {
+    setPass("Olá");
+  }
+
   return (
     <>
-      <BatTextInput />
+      <BatTextInput password={pass} />
       <Pressable
         onPress={() => {
-          console.log("fui pressionado");
+          handleGenerateButton();
         }}
         style={styles.button}
       >
-        <Text
-          onPress={() => {
-            console.log("fui pressionado");
-          }}
-          style={styles.text}
-        >
-          GENERATE
-        </Text>
+        <Text style={styles.text}>GENERATE</Text>
       </Pressable>
 
       <Pressable style={styles.button}>
